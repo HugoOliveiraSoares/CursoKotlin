@@ -9,39 +9,6 @@ fun main() {
       O tipo da variavel não é modificada durante a execução do programa.
 */
 
-    var i = 0
-    while (i < 5) {
-        val titular: String = "Hugo $i"
-        val numeroConta: Int = 1000 + i
-        var saldo = 10.0 + i
-
-//    String template
-        println("Titular $titular")
-        println("Numero conta $numeroConta")
-        println("Saldo conta $saldo")
-        println("=====================")
-        i++
-    }
-
-//    for (i in 5 downTo 1) {
-//
-//        if (i == 4)
-//            continue
-//
-//        val titular: String = "Hugo $i"
-//        val numeroConta: Int = 1000 + i
-//        var saldo = 10.0 + i
-//
-////    String template
-//        println("Titular $titular")
-//        println("Numero conta $numeroConta")
-//        println("Saldo conta $saldo")
-//        println("=====================")
-//
-////    testaCondicoes(saldo)
-//
-//    }
-
     /*
         //cria 5 contas
         for (i in 1..5) {
@@ -62,8 +29,76 @@ fun main() {
           //...
         }
 
+            loop@ for (i in 1..100){
+            println("i $i")
+            for (j in 1..100){
+                println("j $j")
+                if (j == 5)
+                    break@loop
+            }
+        }
+
      */
 
+    val contaHugo = Conta()
+    contaHugo.titular = "Hugo"
+    contaHugo.numeroConta = 1000
+    contaHugo.saldo = 2500.0
+
+    val contaFran = Conta()
+    contaFran.titular = "Fran"
+    contaFran.numeroConta = 1001
+    contaFran.saldo = 2300.0
+
+    println(contaHugo.titular)
+    println(contaHugo.numeroConta)
+    println(contaHugo.saldo)
+    println()
+    println(contaFran.titular)
+    println(contaFran.numeroConta)
+    println(contaFran.saldo)
+
+}
+
+class Conta {
+
+    var titular = ""
+    var numeroConta = 0
+    var saldo = 0.0
+
+}
+
+fun testaLacos(){
+
+    var i = 0
+    while (i < 5) {
+        val titular: String = "Hugo $i"
+        val numeroConta: Int = 1000 + i
+        var saldo = 10.0 + i
+
+//    String template
+        println("Titular $titular")
+        println("Numero conta $numeroConta")
+        println("Saldo conta $saldo")
+        println("=====================")
+        i++
+    }
+
+    for (i in 5 downTo 1) {
+
+        if (i == 4)
+            continue
+
+        val titular: String = "Hugo $i"
+        val numeroConta: Int = 1000 + i
+        var saldo = 10.0 + i
+
+//    String template
+        println("Titular $titular")
+        println("Numero conta $numeroConta")
+        println("Saldo conta $saldo")
+        println("=====================")
+    }
 }
 
 fun testaCondicoes(saldo: Double) {
