@@ -3,30 +3,43 @@ fun main() {
     val contaHugo = Conta()
     contaHugo.titular = "Hugo"
     contaHugo.numeroConta = 1000
-    contaHugo.saldo = 2500.0
+    contaHugo.setSaldo(250.0)
 
     val contaFran = Conta()
     contaFran.titular = "Fran"
     contaFran.numeroConta = 1001
-    contaFran.saldo = 2300.0
+    contaFran.setSaldo(250.0)
 
     println(contaHugo.titular)
     println(contaHugo.numeroConta)
-    println(contaHugo.saldo)
+    println(contaHugo.getSaldo())
     println()
     println(contaFran.titular)
     println(contaFran.numeroConta)
-    println(contaFran.saldo)
+    println(contaFran.getSaldo())
 
     println("depositando na conta do Hugo")
-    deposita(contaHugo, 50.0)
-    println(contaHugo.saldo)
+    contaHugo.deposita(50.0)
+    println(contaHugo.getSaldo())
     println("depositando na conta da Fran")
-    deposita(contaFran, 50.0)
-    println(contaFran.saldo)
+    contaFran.deposita(50.0)
+    println(contaFran.getSaldo())
 
-}
+    println("Sacando na conta do Hugo")
+    contaHugo.saca(300.0)
+    println(contaHugo.getSaldo())
+    println("Sacando na conta da Fran")
+    contaFran.saca(50.0)
+    println(contaFran.getSaldo())
 
-fun deposita(conta: Conta, valor: Double) {
-    conta.saldo += valor
+    println("Tranferencia")
+
+    if (contaFran.tranfere(100.0, contaHugo))
+        println("Sucesso")
+    else
+        println("FALHA")
+
+    println(contaHugo.getSaldo())
+    println(contaFran.getSaldo())
+
 }
