@@ -60,14 +60,6 @@ fun main() {
 
 }
 
-class Conta {
-
-    var titular = ""
-    var numeroConta = 0
-    var saldo = 0.0
-
-}
-
 fun testaLacos(){
 
     var i = 0
