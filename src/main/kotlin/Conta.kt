@@ -1,12 +1,16 @@
-class Conta {
+class Conta(var titular: String, var numeroConta: Int) {
 
-    var titular = ""
-    var numeroConta = 0
     var saldo = 0.0
-        private set(valor){
+        private set(valor) {
             if (valor > 0)
                 field = valor
         }
+
+//    constructor(titular: String, numeroConta: Int) {
+//        this.titular = titular
+//        this.numeroConta = numeroConta
+//    }
+
 
     fun deposita(valor: Double) {
         if (valor > 0)

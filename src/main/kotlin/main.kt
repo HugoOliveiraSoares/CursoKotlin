@@ -1,13 +1,9 @@
 fun main() {
 
-    val contaHugo = Conta()
-    contaHugo.titular = "Hugo"
-    contaHugo.numeroConta = 1000
+    val contaHugo = Conta("Hugo", 1000)
     contaHugo.deposita(250.0)
 
-    val contaFran = Conta()
-    contaFran.titular = "Fran"
-    contaFran.numeroConta = 1001
+    val contaFran = Conta("Fran", 1001)
     contaFran.deposita(250.0)
 
     println(contaHugo.titular)
@@ -41,5 +37,8 @@ fun main() {
 
     println(contaHugo.saldo)
     println(contaFran.saldo)
+
+    println("TESTE")
+    println(contaHugo.saldo)
 
 }
