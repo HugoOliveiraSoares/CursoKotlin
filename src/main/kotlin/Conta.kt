@@ -2,10 +2,15 @@ class Conta {
 
     var titular = ""
     var numeroConta = 0
-    private var saldo = 0.0
+    var saldo = 0.0
+        private set(valor){
+            if (valor > 0)
+                field = valor
+        }
 
     fun deposita(valor: Double) {
-        this.saldo += valor
+        if (valor > 0)
+            this.saldo += valor
     }
 
     fun saca(valor: Double) {
@@ -17,19 +22,11 @@ class Conta {
 
         if (saldo >= valor) {
             saldo -= valor
-            contaDestino.saldo += valor
+            contaDestino.deposita(valor)
             return true
         }
         return false
 
-    }
-
-    fun setSaldo(valor: Double){
-        saldo = valor
-    }
-
-    fun getSaldo(): Double{
-        return saldo
     }
 
 }
