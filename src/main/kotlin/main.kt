@@ -15,10 +15,16 @@ fun main() {
 
     saldo = 100 + 2.0
     saldo += 200
+    saldo -= 2000
 
 //    String template
     println("Titular $titular")
     println("Numero conta $numeroConta")
     println("Saldo conta $saldo")
 
+    when{
+        saldo > 0.0 -> println("Conta é positiva")
+        saldo == 0.0 -> println("Conta é neutra")
+        else -> println("Conta é negativa")
+    }
 }
