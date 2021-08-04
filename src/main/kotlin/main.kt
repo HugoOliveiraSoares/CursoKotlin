@@ -2,56 +2,30 @@ fun main() {
 
     println("Bem vindo ao ByteBank!")
 
-    val hugo = Funcionario("Hugo", "111111111", 1000.0)
+    val contaCorrente = ContaCorrente("Hugo", 1000)
+    val contaPoupanca = ContaPoupanca("Fran", 1001)
 
-    println("FUNCIONARIO")
-    println("nome ${hugo.nome}")
-    println("cpf ${hugo.cpf}")
-    println("salario ${hugo.salario}")
-    println("bonificação ${hugo.bonificacao()}")
+    contaCorrente.deposita(1000.0)
+    contaPoupanca.deposita(1000.0)
 
-    val fran = Gerente("Fran", "2222222", 2000.0, 1234)
+    println("Saldo corrente: ${contaCorrente.saldo}")
+    println("Saldo corrente: ${contaPoupanca.saldo}")
 
-    println("\nGERENTE")
-    println("nome ${fran.nome}")
-    println("cpf ${fran.cpf}")
-    println("salario ${fran.salario}")
-    println("bonificação ${fran.bonificacao()}")
+    contaCorrente.saca(100.0)
+    contaPoupanca.saca(100.0)
 
-    if (fran.autentica(1234))
-        println("Autenticou")
-    else
-        println("Falha na autenticação")
+    println("Após saque, Saldo corrente: ${contaCorrente.saldo}")
+    println("Após saque, Saldo corrente: ${contaPoupanca.saldo}")
 
+    contaCorrente.tranfere(100.0, contaPoupanca)
 
-    val gui = Diretor("Gui", "3333333", 4000.0, 4000, 200)
+    println("saldo corrente após transferir para poupança: ${contaCorrente.saldo}")
+    println("saldo poupança após receber transferencia: ${contaPoupanca.saldo}")
 
-    println("\nDIRETOR")
-    println("nome ${gui.nome}")
-    println("cpf ${gui.cpf}")
-    println("salario ${gui.salario}")
-    println("bonificação ${gui.bonificacao()}")
-    println("plr ${gui.plr}")
+    contaPoupanca.tranfere(100.0, contaCorrente)
 
-    if (gui.autentica(4000))
-        println("Autenticou")
-    else
-        println("Falha na autenticação")
-
-    val maria = Analista(
-        nome = "Maria",
-        cpf = "444.444.444-44",
-        salario = 3000.0
-    )
-
-    val calculadora = CalculadoraBonificacao()
-
-    calculadora.registra(hugo)
-    calculadora.registra(fran)
-    calculadora.registra(gui)
-    calculadora.registra(maria)
-
-    println("total de bonificação: ${calculadora.total}")
+    println("saldo poupança após transferir para corrente: ${contaPoupanca.saldo}")
+    println("saldo corrente após receber transferencia: ${contaCorrente.saldo}")
 
 
 }
