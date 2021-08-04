@@ -3,7 +3,11 @@ fun testaAutenticacao() {
 
     val diretor = Diretor("Fran", "222.222.22-22", 1000.0, 1234, 200)
 
+    val cliente = Cliente("Gui", "333.333.33-33", 4321)
+
     val sistemaInterno = SistemaInterno()
     sistemaInterno.entra(gerente, 1000)
     sistemaInterno.entra(diretor, 1234)
+    sistemaInterno.entra(cliente, 4321)
+
 }
