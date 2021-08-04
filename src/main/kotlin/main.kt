@@ -2,30 +2,13 @@ fun main() {
 
     println("Bem vindo ao ByteBank!")
 
-    val contaCorrente = ContaCorrente("Hugo", 1000)
-    val contaPoupanca = ContaPoupanca("Fran", 1001)
+    val gerente = Gerente("Alex","111.111.11-11", 1000.0, 1000)
 
-    contaCorrente.deposita(1000.0)
-    contaPoupanca.deposita(1000.0)
+    val diretor = Diretor("Fran","222.222.22-22", 1000.0, 1234, 200)
 
-    println("Saldo corrente: ${contaCorrente.saldo}")
-    println("Saldo corrente: ${contaPoupanca.saldo}")
-
-    contaCorrente.saca(100.0)
-    contaPoupanca.saca(100.0)
-
-    println("Após saque, Saldo corrente: ${contaCorrente.saldo}")
-    println("Após saque, Saldo corrente: ${contaPoupanca.saldo}")
-
-    contaCorrente.tranfere(100.0, contaPoupanca)
-
-    println("saldo corrente após transferir para poupança: ${contaCorrente.saldo}")
-    println("saldo poupança após receber transferencia: ${contaPoupanca.saldo}")
-
-    contaPoupanca.tranfere(100.0, contaCorrente)
-
-    println("saldo poupança após transferir para corrente: ${contaPoupanca.saldo}")
-    println("saldo corrente após receber transferencia: ${contaCorrente.saldo}")
+    val sistemaInterno = SistemaInterno()
+    sistemaInterno.entra(gerente, 1000)
+    sistemaInterno.entra(diretor, 1234)
 
 
 }
