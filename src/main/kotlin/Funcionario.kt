@@ -10,5 +10,5 @@ abstract class Funcionario(
 //        }
 //    open val bonificacao: Double get() = salario * 0.1
 
-    open fun bonificacao(): Double = salario * 0.1
+    abstract fun bonificacao(): Double
 }
