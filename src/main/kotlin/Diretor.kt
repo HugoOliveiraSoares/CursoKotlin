@@ -7,7 +7,7 @@ class Diretor(
 ): Funcionario(nome, cpf, salario) {
 
     override fun bonificacao(): Double {
-        return salario * 0.3
+        return super.bonificacao() + salario + plr
     }
 
     fun autentica(senha: Int): Boolean {
