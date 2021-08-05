@@ -1,41 +1,25 @@
-import br.com.alura.bytebank.modelo.*
+import br.com.alura.bytebank.modelo.Cliente
+import br.com.alura.bytebank.modelo.Endereco
 
 fun main() {
 
+    val endereco = Endereco("aaa", 123, "asdf", "sadf", "asff", "fasfsfs", "asdfsdf")
+    val enderecoNovo = Endereco()
 
-    val fran = object: Autenticavel {
-        val nome: String = "Fran"
-        val cpf: String = "111.111.111-11"
-        val senha: Int = 1
+    println(endereco == enderecoNovo)
+    println(endereco.hashCode())
+    println(enderecoNovo.hashCode())
+    println(endereco)
+    println(enderecoNovo)
 
-        override fun autentica(senha: Int) = this.senha == senha
-    }
-
-    println("Nome ${fran.nome}")
-
-    val sistemaInterno = SistemaInterno()
-    sistemaInterno.entra(fran, 1000)
-
-    println("Bem vindo ao ByteBank!")
-
-    val alex = Cliente(nome="Alex", cpf="", senha=1)
-    val contaCorrente = ContaCorrente(titular = alex, numeroConta = 1000)
-    val contaPoupanca = ContaPoupanca(titular = alex, numeroConta = 1000)
-
-//    testaComportamentosConta()
-
-    println("Total de contas: ${Conta.total}")
+    println("${endereco.javaClass}@${endereco.hashCode()}")
 
 }
 
+fun imprime(any: Any): Any {
 
+    println(any)
+    return any
 
-
-
-
-
-
-
-
-
+}
 
