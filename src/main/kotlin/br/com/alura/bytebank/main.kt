@@ -1,40 +1,30 @@
-import br.com.alura.bytebank.modelo.Cliente
-import br.com.alura.bytebank.modelo.ContaCorrente
-import br.com.alura.bytebank.modelo.Endereco
+import br.com.alura.bytebank.modelo.*
 
 fun main() {
 
+
+    val fran = object: Autenticavel {
+        val nome: String = "Fran"
+        val cpf: String = "111.111.111-11"
+        val senha: Int = 1
+
+        override fun autentica(senha: Int) = this.senha == senha
+    }
+
+    println("Nome ${fran.nome}")
+
+    val sistemaInterno = SistemaInterno()
+    sistemaInterno.entra(fran, 1000)
+
     println("Bem vindo ao ByteBank!")
 
-    val hugo = Cliente(
-        "Hugo",
-        "111.111.11-11",
-        endereco = Endereco(
-            "Rua Taquaril",
-            872,
-            "Jonas Veiga",
-            "BH",
-            "MG",
-            "11111111"
-        ),
-        senha = 1
-    )
-    val fran = Cliente(
-        "Fran",
-        "222.222.22-22",
-        senha = 2
-    )
+    val alex = Cliente(nome="Alex", cpf="", senha=1)
+    val contaCorrente = ContaCorrente(titular = alex, numeroConta = 1000)
+    val contaPoupanca = ContaPoupanca(titular = alex, numeroConta = 1000)
 
-    val contaHugo = ContaCorrente(hugo, 1000)
-    contaHugo.deposita(250.0)
+//    testaComportamentosConta()
 
-    val contaFran = ContaCorrente(fran, 1001)
-    contaFran.deposita(250.0)
-
-    println("nome ${contaHugo.titular}")
-    println("nome ${contaHugo.titular.nome}")
-    println("nome ${contaHugo.titular.cpf}")
-    println("nome ${contaHugo.titular.endereco.logradouro}")
+    println("Total de contas: $totalContas")
 
 }
 
