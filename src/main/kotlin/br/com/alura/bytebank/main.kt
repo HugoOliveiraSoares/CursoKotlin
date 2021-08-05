@@ -24,7 +24,7 @@ fun main() {
 
 //    testaComportamentosConta()
 
-    println("Total de contas: $totalContas")
+    println("Total de contas: ${Conta.total}")
 
 }
 
