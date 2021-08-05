@@ -3,16 +3,28 @@ import br.com.alura.bytebank.modelo.Endereco
 
 fun main() {
 
-    val endereco = Endereco("aaa", 123, "asdf", "sadf", "asff", "fasfsfs", "asdfsdf")
-    val enderecoNovo = Endereco()
+    val endereco = Endereco(
+        logradouro = "Rua vergueiro",
+        complemento = "Alura",
+        cep = "00000-000"
+    )
 
-    println(endereco == enderecoNovo)
+    val enderecoNovo = Endereco(
+        bairro = "Vila Mariana",
+        complemento = "Alura",
+        cep = "00000-020"
+    )
+
+    println(endereco.equals(enderecoNovo))
+    println("1234".hashCode())
+
+//    println(endereco == enderecoNovo)
     println(endereco.hashCode())
     println(enderecoNovo.hashCode())
-    println(endereco)
-    println(enderecoNovo)
-
-    println("${endereco.javaClass}@${endereco.hashCode()}")
+//    println(endereco)
+//    println(enderecoNovo)
+//
+//    println("${endereco.javaClass}@${endereco.hashCode()}")
 
 }
 
