@@ -1,3 +1,5 @@
+import br.com.alura.bytebank.exception.FalhaAutenticacaoException
+import br.com.alura.bytebank.exception.SaldoInsuficienteException
 import br.com.alura.bytebank.modelo.Cliente
 import br.com.alura.bytebank.modelo.ContaCorrente
 import br.com.alura.bytebank.modelo.ContaPoupanca
@@ -59,41 +61,49 @@ fun testaComportamentosConta() {
 
     println("Tranferencia")
 
-    if (contaFran.tranfere(100.0, contaHugo))
-        println("Sucesso")
-    else
-        println("FALHA")
+    try {
+        contaFran.tranfere(500.0, contaHugo, 1)
+        println("Sucesso na transferencia")
+    } catch (e: SaldoInsuficienteException) {
+        println("FALHA na transferencia")
+        println("Saldo insuficiente")
+        e.printStackTrace()
+    } catch (e: FalhaAutenticacaoException){
+        println("FALHA na transferencia")
+        println("FALHA na autenticação")
+        e.printStackTrace()
+    } catch (e: Exception){
+        println("Erro desconhecido")
+        e.printStackTrace()
+    }
 
     println(contaHugo.saldo)
     println(contaFran.saldo)
 
-    println("TESTE")
-    println(contaHugo.saldo)
-
-    println("==TIPOS DE CONTAS==")
-
-    val contaCorrente = ContaCorrente(hugo, 1000)
-    val contaPoupanca = ContaPoupanca(fran, 1001)
-
-    contaCorrente.deposita(1000.0)
-    contaPoupanca.deposita(1000.0)
-
-    println("Saldo corrente: ${contaCorrente.saldo}")
-    println("Saldo corrente: ${contaPoupanca.saldo}")
-
-    contaCorrente.saca(100.0)
-    contaPoupanca.saca(100.0)
-
-    println("Após saque, Saldo corrente: ${contaCorrente.saldo}")
-    println("Após saque, Saldo corrente: ${contaPoupanca.saldo}")
-
-    contaCorrente.tranfere(100.0, contaPoupanca)
-
-    println("saldo corrente após transferir para poupança: ${contaCorrente.saldo}")
-    println("saldo poupança após receber transferencia: ${contaPoupanca.saldo}")
-
-    contaPoupanca.tranfere(100.0, contaCorrente)
-
-    println("saldo poupança após transferir para corrente: ${contaPoupanca.saldo}")
-    println("saldo corrente após receber transferencia: ${contaCorrente.saldo}")
+//    println("==TIPOS DE CONTAS==")
+//
+//    val contaCorrente = ContaCorrente(hugo, 1000)
+//    val contaPoupanca = ContaPoupanca(fran, 1001)
+//
+//    contaCorrente.deposita(1000.0)
+//    contaPoupanca.deposita(1000.0)
+//
+//    println("Saldo corrente: ${contaCorrente.saldo}")
+//    println("Saldo corrente: ${contaPoupanca.saldo}")
+//
+//    contaCorrente.saca(100.0)
+//    contaPoupanca.saca(100.0)
+//
+//    println("Após saque, Saldo corrente: ${contaCorrente.saldo}")
+//    println("Após saque, Saldo corrente: ${contaPoupanca.saldo}")
+//
+//    contaCorrente.tranfere(100.0, contaPoupanca, 1)
+//
+//    println("saldo corrente após transferir para poupança: ${contaCorrente.saldo}")
+//    println("saldo poupança após receber transferencia: ${contaPoupanca.saldo}")
+//
+//    contaPoupanca.tranfere(100.0, contaCorrente, 2)
+//
+//    println("saldo poupança após transferir para corrente: ${contaPoupanca.saldo}")
+//    println("saldo corrente após receber transferencia: ${contaCorrente.saldo}")
 }

@@ -1,9 +1,12 @@
 package br.com.alura.bytebank.modelo
 
+import br.com.alura.bytebank.exception.FalhaAutenticacaoException
+import br.com.alura.bytebank.exception.SaldoInsuficienteException
+
 abstract class Conta(
     var titular: Cliente,
     val numeroConta: Int
-) {
+): Autenticavel {
 
     var saldo = 0.0
         protected set
@@ -30,15 +33,22 @@ abstract class Conta(
 
     abstract fun saca(valor: Double)
 
-    fun tranfere(valor: Double, contaDestino: Conta): Boolean {
+    fun tranfere(valor: Double, contaDestino: Conta, senha: Int) {
 
-        if (saldo >= valor) {
-            saldo -= valor
-            contaDestino.deposita(valor)
-            return true
+        if (saldo < valor) {
+            throw SaldoInsuficienteException(
+                "O saldo é insuficiente, saldo atual: $saldo, valor a ser subtraído $valor"
+            )
         }
-        return false
 
+        if (!autentica(senha))
+            throw FalhaAutenticacaoException()
+
+        saldo -= valor
+        contaDestino.deposita(valor)
     }
 
+    override fun autentica(senha: Int): Boolean {
+        return titular.autentica(senha)
+    }
 }
