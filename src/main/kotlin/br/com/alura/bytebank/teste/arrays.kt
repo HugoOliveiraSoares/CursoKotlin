@@ -2,7 +2,8 @@ package br.com.alura.bytebank.teste
 
 fun main() {
 //    introArrays()
-    salarios()
+//    salarios()
+    ranges()
 
 }
 
@@ -57,5 +58,29 @@ fun salarios(){
     salarios.forEachIndexed {i, salario ->
         salarios[i] = salario * aumento
     }
+
+}
+
+fun ranges(){
+
+    val serie = 1.rangeTo(10)
+    for (s in serie)
+        print("$s ")
+
+    println()
+
+    val numerosPares = 2.until(100) step 2
+    for (numeroPar in numerosPares)
+        print("$numeroPar ")
+
+    val numerosParesReverso = 100 downTo 0 step 2
+    numerosParesReverso.forEach{ print(" $it ") }
+
+    println()
+    val alfabeto = 'a'..'z'
+    val letrak = 'k'
+    val letraK = 'K'
+    println("k " + (letrak in alfabeto))
+    println("K " + (letraK in alfabeto))
 
 }
