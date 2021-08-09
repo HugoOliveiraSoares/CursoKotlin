@@ -37,7 +37,7 @@ fun main() {
 
     livros.add(Livro(
         "Sagarana",
-        "Jão Guimarães Rosa",
+        "João Guimarães Rosa",
         1946
     ))
 
@@ -53,6 +53,12 @@ fun main() {
     val ordenadoPorTitulo = livros.sortedBy { it.titulo }
     ordenadoPorTitulo.imprimeComMarcadores()
 
+    val titulos: List<String> = livros
+        .filter { it.autor.startsWith("J") }
+        .sortedBy { it.anoPublicacao }
+        .map { it.titulo }
+
+    println(titulos)
 
 }
 
