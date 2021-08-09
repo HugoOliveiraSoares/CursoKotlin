@@ -3,7 +3,34 @@ package br.com.alura.bytebank.teste
 fun main() {
 //    introArrays()
 //    salarios()
-    ranges()
+//    ranges()
+    idades()
+
+}
+
+fun idades() {
+    val idades: IntArray = intArrayOf(10, 12, 18, 33, 40, 67)
+    val maiorIdade = idades.maxOrNull()
+    println("Maior idade: $maiorIdade")
+
+    val menorIdade = idades.minOrNull()
+    println("Menor idade: $menorIdade")
+
+    val media = idades.average()
+    println("Média: $media")
+
+    val todosMaiores = idades.all { it >= 18 }
+    println("Todos maiores de idade? $todosMaiores")
+
+    val existeMaior = idades.any { it >= 18 }
+    println("Tem pelo menos um maior de idade? $existeMaior")
+
+    val maiores = idades.filter { it >= 18 }
+    println("Maiores de idade: $maiores")
+
+    // Retorna o primeiro elemento que satisfaz a condição
+    val busca = idades.find { it == 18 }
+    println(busca)
 
 }
 
