@@ -28,6 +28,13 @@ fun salariosComBigDecimal() {
     val gastoInicial = salariosComAumento.somatoria()
     println(gastoInicial)
 
+    val meses = "6".toBigDecimal()
+    val gastoTotal = salariosComAumento.fold(gastoInicial) { acc, salario ->
+        acc + (salario * meses).setScale(2, RoundingMode.UP)
+    }
+
+    println(gastoTotal)
+
 }
 
 fun Array<BigDecimal>.somatoria(): BigDecimal{
