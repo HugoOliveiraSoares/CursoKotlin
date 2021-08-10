@@ -3,9 +3,10 @@ package br.com.alura.bytebank.collections
 fun main() {
 
     val banco = BancoDeDados()
+    val nomesSalvos: Collection<String> = banco.nomes
 //    banco.nomes.add("Alex")
     banco.salva("Alex")
-    println(banco.nomes)
+    println(nomesSalvos)
     println(BancoDeDados().nomes)
 
 
