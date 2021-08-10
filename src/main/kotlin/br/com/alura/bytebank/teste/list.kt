@@ -4,6 +4,12 @@ import br.com.alura.bytebank.modelo.Livro
 
 fun main() {
 
+    listaLivros()
+//    listaLivrosComNulos()
+
+}
+
+fun listaLivros() {
     val livro1 = Livro(
         "Algoritmos",
         "Cormen",
@@ -31,17 +37,19 @@ fun main() {
     )
 
 
-    val livros:MutableList<Livro> = mutableListOf(livro1, livro2, livro3, livro4)
+    val livros: MutableList<Livro> = mutableListOf(livro1, livro2, livro3, livro4)
 
-    livros.imprimeComMarcadores()
+//    livros.imprimeComMarcadores()
 
-    livros.add(Livro(
-        "Sagarana",
-        "João Guimarães Rosa",
-        1946
-    ))
+    livros.add(
+        Livro(
+            "Sagarana",
+            "João Guimarães Rosa",
+            1946
+        )
+    )
 
-    livros.imprimeComMarcadores()
+/*    livros.imprimeComMarcadores()
 
     livros.remove(livro1)
 
@@ -58,18 +66,52 @@ fun main() {
         .sortedBy { it.anoPublicacao }
         .map { it.titulo }
 
-    println(titulos)
+    println(titulos)*/
 
+    livros
+        .groupBy { it.editora ?: "Editora desconhecida" }
+        .forEach{ (editora: String, livros: List<Livro>) ->
+            println("$editora: ${livros.joinToString { it.titulo }}")
+        }
 }
 
-fun List<Livro>.imprimeComMarcadores() {
+fun listaLivrosComNulos() {
 
-    val textoFormatado = this.joinToString(separator = "\n") {
-        " - ${it.titulo} de ${it.autor}"
-    }
+    val livro1 = Livro(
+        "Algoritmos",
+        "Cormen",
+        2003
+    )
 
-    println(" #### Lista de Livros ####")
-    println(textoFormatado)
+    val livro2 = Livro(
+        "Iracema",
+        "José de Alencar",
+        1865,
+        "Editora A"
+    )
+
+    val livro3 = Livro(
+        "Grande Sertão: Veredas",
+        "João Guimarães Rosa",
+        1956
+    )
+
+    val livro4 = Livro(
+        "Minha vida de menina",
+        "Helena Morley",
+        1942,
+        "Editora B"
+    )
+
+    val livrosComNulos: MutableList<Livro?> = mutableListOf(null, livro1, null, livro2, null, livro3, livro4)
+
+    livrosComNulos.add(
+        Livro(
+            "Sagarana",
+            "João Guimarães Rosa",
+            1946
+        )
+    )
 
 }
 
