@@ -2,27 +2,17 @@ package br.com.alura.bytebank.collections
 
 fun main() {
 
-    val assistiramCursoDeAndroid = setOf("Alex", "Fran", "Gui", "Maria")
-    val assistiramCursoDeKotlin = setOf("Alex", "Paulo", "Maria")
-//    val assistiramAmbos: Set<String> = assistiramCursoDeAndroid + assistiramCursoDeKotlin
-    val assistiramAmbos = mutableSetOf<String>()
-    assistiramAmbos.addAll(assistiramCursoDeAndroid)
-    assistiramAmbos.addAll(assistiramCursoDeKotlin)
-    assistiramAmbos.add("Ana")
-    assistiramAmbos.add("Ana")
-    println(assistiramAmbos)
+    val pedidos = mapOf(Pair(1, 20.0), Pair(2, 34.0), 3 to 50.0)
+    println(pedidos)
+//    val pedido = pedidos[1]
+//
+//    pedido?.let {
+//        println("Pedido $it")
+//    }
 
-    println(assistiramCursoDeAndroid + assistiramCursoDeKotlin )
-    println(assistiramCursoDeAndroid union assistiramCursoDeKotlin )
-
-    println(assistiramCursoDeAndroid - assistiramCursoDeKotlin )
-    println(assistiramCursoDeAndroid subtract  assistiramCursoDeKotlin )
-
-    println(assistiramCursoDeAndroid intersect assistiramCursoDeKotlin )
-
-    val assistiramList = assistiramAmbos.toMutableList()
-    assistiramList.add("Alex")
-    println(assistiramList)
-    println(assistiramList.toSet())
+    for (pedido in pedidos){
+        println("Numero do pedido: ${pedido.key}")
+        println("Valor do pedido: ${pedido.value}")
+    }
 
 }
