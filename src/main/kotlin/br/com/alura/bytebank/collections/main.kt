@@ -2,23 +2,10 @@ package br.com.alura.bytebank.collections
 
 fun main() {
 
-    val banco = BancoDeDados()
-    val nomesSalvos: Collection<String> = banco.nomes
-//    banco.nomes.add("Alex")
-    banco.salva("Alex")
-    println(nomesSalvos)
-    println(BancoDeDados().nomes)
+    val assistiramCursoDeAndroid = listOf("Alex", "Fran", "Gui", "Maria")
+    val assistiramCursoDeKotlin = listOf("Alex", "Paulo", "Maria")
+    val assistiramAmbos = assistiramCursoDeAndroid + assistiramCursoDeKotlin
 
+    println(assistiramAmbos.distinct())
 
-}
-
-fun testaColecao() {
-    val nomes: Collection<String> = mutableListOf("Alex", "Fran", "Gui", "Maria", "Ana")
-
-    for (nome in nomes.iterator())
-        println(nome)
-
-    println(nomes)
-    println("Tem o nome Alex? ${nomes.contains("Alex")}")
-    println("Tamanho da coleção ${nomes.size}")
 }
