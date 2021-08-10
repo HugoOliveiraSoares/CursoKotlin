@@ -2,10 +2,14 @@ package br.com.alura.bytebank.collections
 
 fun main() {
 
-    val assistiramCursoDeAndroid = listOf("Alex", "Fran", "Gui", "Maria")
-    val assistiramCursoDeKotlin = listOf("Alex", "Paulo", "Maria")
-    val assistiramAmbos = assistiramCursoDeAndroid + assistiramCursoDeKotlin
-
-    println(assistiramAmbos.distinct())
+    val assistiramCursoDeAndroid = setOf("Alex", "Fran", "Gui", "Maria")
+    val assistiramCursoDeKotlin = setOf("Alex", "Paulo", "Maria")
+//    val assistiramAmbos: Set<String> = assistiramCursoDeAndroid + assistiramCursoDeKotlin
+    val assistiramAmbos = mutableSetOf<String>()
+    assistiramAmbos.addAll(assistiramCursoDeAndroid)
+    assistiramAmbos.addAll(assistiramCursoDeKotlin)
+    assistiramAmbos.add("Ana")
+    assistiramAmbos.add("Ana")
+    println(assistiramAmbos)
 
 }
