@@ -2,34 +2,34 @@ package br.com.alura.bytebank.paradigmaFuncional
 
 fun main() {
 
-//    testaTipoFuncaoReferencia()
-//    testaTipoFuncaoClasse()
+    testaTipoFuncaoReferencia()
+    testaTipoFuncaoClasse()
 
-    val minhaFuncaoLambda = {
-        println("Executa como lambda")
-    }
-
-    println(minhaFuncaoLambda())
-
-    val minhaFuncaoAnonima: () -> Unit = fun () {
-        println("Executa como anonima")
-    }
-
-    println(minhaFuncaoAnonima())
+//    val minhaFuncaoLambda = {
+//        println("Executa como lambda")
+//    }
+//
+//    println(minhaFuncaoLambda())
+//
+//    val minhaFuncaoAnonima: () -> Unit = fun () {
+//        println("Executa como anonima")
+//    }
+//
+//    println(minhaFuncaoAnonima())
 
 }
 
 fun testaTipoFuncaoClasse() {
-    val minhaFuncaoClasse = Teste()
-    println(minhaFuncaoClasse())
+    val minhaFuncaoClasse: (Int, Int) -> Int = Soma()
+    println(minhaFuncaoClasse(10, 10))
 }
 
 fun testaTipoFuncaoReferencia() {
-    val minhaFuncao = ::teste
+    val minhaFuncao: (Int, Int) -> Int = ::soma
 
-    println(minhaFuncao())
+    println(minhaFuncao(5, 10))
 }
 
-fun teste() {
-    println("executa teste")
+fun soma(a: Int, b: Int): Int {
+    return a + b
 }
