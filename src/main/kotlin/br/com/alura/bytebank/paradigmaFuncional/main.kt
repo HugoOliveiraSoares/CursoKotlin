@@ -1,70 +1,50 @@
 package br.com.alura.bytebank.paradigmaFuncional
 
-import br.com.alura.bytebank.modelo.Autenticavel
+import br.com.alura.bytebank.modelo.Cliente
+import br.com.alura.bytebank.modelo.ContaPoupanca
 import br.com.alura.bytebank.modelo.Endereco
-import br.com.alura.bytebank.modelo.SistemaInterno
 
 fun main() {
 
-//    val endereco = Endereco("Rua Vergueiro", 3185)
-//    val enderecoEmMaiusculo = "${endereco.logradouro}, ${endereco.numero}".toUpperCase()
-//    println(enderecoEmMaiusculo)
+    testaRun()
 
-//    Endereco("Rua Vergueiro", 3185)
-//        .run {
-//            "$logradouro, $numero".toUpperCase()
-//    }.let (::println)
 
-//    run {
-//        println("execução do run sem extensão")
-//    }
+}
 
-//    val endereco = Endereco("Rua Vergueiro", 3185)
-    val endereco = Endereco()
-        .also { println("Criando endereço") }
-        .apply {
-        logradouro = "Rua Vergueiro"
-        numero = 3185
-    }
+fun testaRun() {
+    val taxaAnual = 0.05
+    val taxaMensal = taxaAnual / 12
+    println("taxa mensal: $taxaMensal")
 
-    with(endereco) {
-        "$logradouro, $numero".toUpperCase()
+    val contaPoupanca = ContaPoupanca(Cliente("Alex", "111.111.111-11", senha = 1234), 1000)
+
+    contaPoupanca.run {
+        deposita(1000.0)
+        saldo * taxaMensal
     }.let(::println)
 
-    listOf(Endereco(complemento = "casa"), Endereco(), Endereco(complemento = "apartamento"))
-        .filter { endereco -> endereco.complemento.isNotEmpty() }
-        .let(::println)
-
-    soma(1, 5, resultado = (::println))
-
-    val autenticavel = object : Autenticavel {
-        val senha = 1234
-        override fun autentica(senha: Int) = this.senha == senha
+    val rendimentoAnual = run {
+        var saldo = contaPoupanca.saldo
+        repeat(12) {
+            saldo += saldo * taxaMensal
+        }
+        saldo
     }
 
-    SistemaInterno().entra(autenticavel, 1234, autenticado = {
-        println("Realizar pagamento")
-    })
-
-/*    higher order function
-    "".let(::testeRecebeString)
-
-    teste(1) {}*/
-
+    println(rendimentoAnual)
 }
 
-fun soma(a: Int, b: Int, resultado: (Int) -> Unit) {
-
-    resultado(a + b)
-
+fun testaWith() {
+    with(Endereco()) {
+        logradouro = "Rua Vergueiro"
+        numero = 3185
+        bairro = "Jonas Veiga"
+        cidade = "BH"
+        estado = "MG"
+        cep = "02310-063"
+        complemento = "Apartamento"
+        completo()
+    }.let { enderecoCompleto: String ->
+        println(enderecoCompleto)
+    }
 }
-
-/*
-fun testeRecebeString(valor: String){
-
-}
-
-//    higher order function
-fun teste(test: Int, block: () -> Unit): () -> Unit {
-
-}*/
